@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BaseViewController.h"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -21,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"视频测试";
+    self.title = @"测试";
 
     NSString *path=[[NSBundle mainBundle]pathForResource:@"Controls" ofType:@"plist"];
     NSArray *arr = [NSArray arrayWithContentsOfFile:path];
@@ -53,6 +54,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    BaseViewController *baseVC = [[BaseViewController alloc]init];
+    baseVC.atIndex = indexPath.row;
+    [self.navigationController pushViewController:baseVC animated:YES];
     
 }
 
